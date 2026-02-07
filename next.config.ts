@@ -4,6 +4,10 @@ import type { NextConfig } from 'next';
 import './lib/env';
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react"],
+  },
+
   // Security headers applied to all routes
   async headers() {
     // Content Security Policy
