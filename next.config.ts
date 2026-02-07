@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' blob: data: https://cdn.sanity.io",
       "font-src 'self' data:",
+      "frame-src 'self' https://www.youtube.com https://player.vimeo.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
