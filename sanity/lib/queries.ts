@@ -114,6 +114,19 @@ export const PAGE_METADATA_QUERY = defineQuery(`
   }
 `);
 
+export const SITEMAP_QUERY = defineQuery(`
+  {
+    "pages": *[_type == "page" && !(_id in path("drafts.**"))]{
+      "slug": slug.current,
+      _updatedAt
+    },
+    "posts": *[_type == "post" && !(_id in path("drafts.**"))]{
+      "slug": slug.current,
+      _updatedAt
+    }
+  }
+`);
+
 export const ALL_CATEGORIES_QUERY = defineQuery(`
   *[_type == "category"] | order(title asc) {
     _id,
