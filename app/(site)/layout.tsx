@@ -1,6 +1,7 @@
 import { sanityFetch } from "@/sanity/live";
 import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default async function SiteLayout({
   children,
@@ -18,7 +19,13 @@ export default async function SiteLayout({
         navigation={siteSettings?.navigation || []}
       />
       <main className="flex-1">{children}</main>
-      {/* Footer will be added in 04-02 */}
+      <Footer
+        siteName={siteSettings?.siteName || "Website"}
+        siteDescription={siteSettings?.siteDescription}
+        navigation={siteSettings?.navigation}
+        socialLinks={siteSettings?.socialLinks}
+        footerText={siteSettings?.footerText}
+      />
     </div>
   );
 }
