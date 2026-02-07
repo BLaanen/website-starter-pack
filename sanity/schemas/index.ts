@@ -1,12 +1,12 @@
 // Object types
-import { seo } from './objects/seo';
-import { portableText } from './objects/portableText';
+import seo from './objects/seo';
+import portableText from './objects/portableText';
 
 // Block types
-import { imageBlock } from './blocks/imageBlock';
-import { videoEmbed } from './blocks/videoEmbed';
-import { callout } from './blocks/callout';
-import { ctaButton } from './blocks/ctaButton';
+import imageBlock from './blocks/imageBlock';
+import videoEmbed from './blocks/videoEmbed';
+import callout from './blocks/callout';
+import ctaButton from './blocks/ctaButton';
 
 // Document types
 import { author } from './documents/author';

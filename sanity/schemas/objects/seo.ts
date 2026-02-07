@@ -12,7 +12,7 @@ export default defineType({
       title: 'Meta Title',
       description: 'Title for search engines and social media (50-60 characters recommended)',
       validation: (Rule) =>
-        Rule.custom((value) => {
+        Rule.custom<string>((value) => {
           if (!value) return true
           if (value.length > 60) {
             return 'Title is longer than 60 characters. Consider shortening for better display in search results.'
@@ -27,7 +27,7 @@ export default defineType({
       description: 'Description for search engines and social media (150-160 characters recommended)',
       rows: 3,
       validation: (Rule) =>
-        Rule.custom((value) => {
+        Rule.custom<string>((value) => {
           if (!value) return true
           if (value.length > 160) {
             return 'Description is longer than 160 characters. Consider shortening for better display in search results.'
