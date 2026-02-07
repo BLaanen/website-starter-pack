@@ -80,6 +80,22 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
   }
 `);
 
+export const HOMEPAGE_QUERY = defineQuery(`
+  *[_type == "page" && slug.current == "home"][0] {
+    title,
+    body[] {
+      ...,
+      _type == "imageBlock" => {
+        ...,
+        image {
+          ...,
+          asset->
+        }
+      }
+    }
+  }
+`);
+
 export const ALL_CATEGORIES_QUERY = defineQuery(`
   *[_type == "category"] | order(title asc) {
     _id,
