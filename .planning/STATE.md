@@ -2,10 +2,10 @@
 
 ## Current Position
 
-Phase: 06 of ? (SEO & Production Polish)
-Plan: 02 of 02 in phase
-Status: Phase complete
-Last activity: 2026-02-08 - Completed 06-01 and 06-02 (SEO Metadata + Sitemap/Robots)
+Phase: 07 of 07 (Pattern Library & Process)
+Plan: 01 of 03 in phase
+Status: In progress
+Last activity: 2026-02-08 - Completed 07-01 (Pattern Library Infrastructure & Blog Pattern)
 
 ## Accumulated Decisions
 
@@ -16,6 +16,8 @@ Last activity: 2026-02-08 - Completed 06-01 and 06-02 (SEO Metadata + Sitemap/Ro
 | D-0502-03 | Email service deferred to Phase 7 (Resend), Server Action logs to console | 05-02 |
 | D-0601-01 | Centralized generatePageMetadata helper pattern for reusable SEO metadata | 06-01 |
 | D-0602-01 | Use client.fetch for sitemap instead of sanityFetch (no live preview needed) | 06-02 |
+| D-0701-01 | Patterns use placeholder empty arrays -- nothing renders until user wires Sanity client | 07-01 |
+| D-0701-02 | Blog post schema uses inline Portable Text definition for self-containment | 07-01 |
 
 ## Blockers / Concerns
 
@@ -23,6 +25,6 @@ Last activity: 2026-02-08 - Completed 06-01 and 06-02 (SEO Metadata + Sitemap/Ro
 
 ## Session Continuity
 
-Last session: 2026-02-07T23:40:54Z
-Stopped at: Completed 06-02-PLAN.md (Phase 06 complete)
+Last session: 2026-02-07T23:49:02Z
+Stopped at: Completed 07-01-PLAN.md
 Resume file: None
