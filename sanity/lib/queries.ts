@@ -96,6 +96,24 @@ export const HOMEPAGE_QUERY = defineQuery(`
   }
 `);
 
+export const PAGE_METADATA_QUERY = defineQuery(`
+  {
+    "page": *[_type == "page" && slug.current == $slug][0]{
+      "metaTitle": coalesce(seo.metaTitle, title),
+      "metaDescription": coalesce(seo.metaDescription, ""),
+      "ogImage": seo.ogImage {
+        ...,
+        asset->
+      },
+      title
+    },
+    "siteSettings": *[_type == "siteSettings"][0]{
+      siteName,
+      siteDescription
+    }
+  }
+`);
+
 export const ALL_CATEGORIES_QUERY = defineQuery(`
   *[_type == "category"] | order(title asc) {
     _id,

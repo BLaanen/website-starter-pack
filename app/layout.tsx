@@ -19,8 +19,12 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: 'Website',
-  description: 'Built with Next.js and Sanity',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: {
+    template: '%s | Website',
+    default: 'Website',
+  },
+  description: 'A professional website powered by Next.js and Sanity',
 };
 
 export default function RootLayout({

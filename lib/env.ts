@@ -30,6 +30,11 @@ const publicSchema = z.object({
   NEXT_PUBLIC_SANITY_DATASET: z
     .string()
     .min(1, "Sanity dataset is required -- usually 'production'"),
+  NEXT_PUBLIC_SITE_URL: z
+    .string()
+    .url()
+    .optional()
+    .default('http://localhost:3000'),
 });
 
 // Combined schema for full validation
@@ -46,6 +51,7 @@ try {
     const publicEnv = publicSchema.parse({
       NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
       NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+      NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     });
 
     // Create partial env object with empty server vars for build config
@@ -61,6 +67,7 @@ try {
       SANITY_API_WRITE_TOKEN: process.env.SANITY_API_WRITE_TOKEN,
       NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
       NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+      NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
     });
   }
 } catch (error) {
