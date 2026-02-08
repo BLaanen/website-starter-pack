@@ -20,8 +20,8 @@ reference library you copy from.
 
 1. **Read the pattern README** -- each pattern has its own `README.md` with
    prerequisites, installation steps, and customization notes.
-2. **Copy the files** into your project's `src/` directory (or wherever your
-   project structure expects them).
+2. **Copy the files** into your project directory (e.g., schemas into `sanity/schemas/`,
+   pages into `app/`, components into `components/`).
 3. **Install dependencies** -- patterns list their required npm packages.
 4. **Configure** -- update imports, wire up your Sanity client, set environment
    variables, and register any Sanity schemas.

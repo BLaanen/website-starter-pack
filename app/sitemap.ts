@@ -8,8 +8,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await client.fetch(SITEMAP_QUERY);
 
   const pages = (data?.pages || [])
-    .filter((page: any) => page.slug && page.slug !== 'home')
-    .map((page: any) => ({
+    .filter((page: { slug?: string; _updatedAt: string }) => page.slug && page.slug !== 'home')
+    .map((page: { slug?: string; _updatedAt: string }) => ({
       url: `${baseUrl}/${page.slug}`,
       lastModified: new Date(page._updatedAt),
       changeFrequency: 'monthly' as const,
@@ -17,8 +17,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
   const posts = (data?.posts || [])
-    .filter((post: any) => post.slug)
-    .map((post: any) => ({
+    .filter((post: { slug?: string; _updatedAt: string }) => post.slug)
+    .map((post: { slug?: string; _updatedAt: string }) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post._updatedAt),
       changeFrequency: 'weekly' as const,
