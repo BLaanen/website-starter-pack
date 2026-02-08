@@ -16,48 +16,192 @@ A ready-to-go starter template for building professional websites with **Next.js
 - A pattern library with copy-paste blog and contact form features
 - A step-by-step process guide ([PROCESS.md](./PROCESS.md)) for going from clone to launched site
 
+---
+
 ## Prerequisites
 
-Before you start, make sure you have these installed on your computer:
+This section walks you through everything you need before cloning the template. If you've never used a terminal before, don't worry -- every step tells you exactly what to type and what to expect back.
 
-1. **Node.js** (version 20 or higher)
-   - Check if you have it: open your terminal and run `node -v`
-   - If not installed: download from [nodejs.org](https://nodejs.org/) (pick the LTS version)
+### Opening a terminal
 
-2. **npm** (comes with Node.js)
-   - Check: `npm -v`
+- **Mac:** Press `Cmd + Space`, type `Terminal`, press Enter
+- **Windows:** Press `Win + R`, type `cmd`, press Enter (or search for "Terminal" in the Start menu)
 
-3. **Git**
-   - Check: `git --version`
-   - If not installed: download from [git-scm.com](https://git-scm.com/)
+You'll see a blinking cursor waiting for input. This is where you'll type all the commands below.
 
-4. **A code editor** -- [VS Code](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/) recommended
+### Step 1: Create your accounts
 
-5. **Accounts you'll need** (all free to start):
-   - [GitHub](https://github.com/) -- to host your code
-   - [Sanity.io](https://www.sanity.io/) -- for the content management system
-   - [Vercel](https://vercel.com/) -- to deploy and host your site
+Create these three accounts in this order. Signing up with GitHub for all of them keeps everything linked under one login.
+
+1. **GitHub** -- go to [github.com](https://github.com/) and create a free account. This is where your website's code will live.
+2. **Vercel** -- go to [vercel.com](https://vercel.com/) and click **Sign Up**, then choose **Continue with GitHub**. This is what hosts and deploys your website.
+3. **Sanity** -- go to [sanity.io](https://www.sanity.io/) and click **Get started**, then choose **Continue with GitHub**. This is the content management system (CMS) where you'll edit your site's text, images, etc.
+
+### Step 2: Install developer tools
+
+#### Git
+
+Git tracks changes to your code and lets you push it to GitHub.
+
+Check if you already have it:
+```bash
+git --version
+```
+
+**If you see something like** `git version 2.39.0` -- you're good, skip to the next tool.
+
+**If you see** `command not found` or get a prompt to install developer tools -- install it:
+
+- **Mac:** A popup may appear asking to install Xcode Command Line Tools. Click **Install**. Or run:
+  ```bash
+  xcode-select --install
+  ```
+- **Windows:** Download from [git-scm.com](https://git-scm.com/) and run the installer with default settings.
+
+After installing, close and reopen your terminal, then run `git --version` again to confirm.
+
+#### Node.js
+
+Node.js runs the JavaScript that powers the website. npm (Node Package Manager) comes bundled with it.
+
+Check if you already have it:
+```bash
+node -v
+```
+
+**If you see** `v20.x.x` or higher (e.g., `v22.5.1`) -- you're good.
+
+**If you see** `command not found` or a version lower than 20 -- install it:
+
+- **Mac (with Homebrew):**
+  ```bash
+  brew install node
+  ```
+  Don't have Homebrew? Install it first with:
+  ```bash
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  ```
+  Then run `brew install node`.
+
+- **Mac or Windows (without Homebrew):** Download the LTS version from [nodejs.org](https://nodejs.org/) and run the installer.
+
+Verify both installed:
+```bash
+node -v
+npm -v
+```
+
+You should see version numbers for both (e.g., `v22.5.1` and `10.8.2`).
+
+#### Claude Code
+
+Claude Code is the AI assistant that will help you build your site. It runs in your terminal.
+
+Check if you already have it:
+```bash
+claude --version
+```
+
+**If you see** a version number -- you're good.
+
+**If you see** `command not found` -- install it:
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+> You'll need an [Anthropic account](https://console.anthropic.com/) with API access, or a Claude Pro/Max subscription, to use Claude Code. See the [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code) for setup details.
+
+### Step 3: Install Claude Code skills
+
+These skills are separate from Claude Code itself and need to be installed once. They give Claude specialized abilities for project management and design.
+
+#### GSD (Get Shit Done)
+
+GSD is a workflow system that breaks your project into phases, tracks progress, and picks up where you left off between sessions.
+
+```bash
+npx get-shit-done-cc --claude --global
+```
+
+Verify it worked by opening Claude Code and running `/gsd:help`.
+
+To update GSD later:
+```bash
+npx get-shit-done-cc@latest --claude --global
+```
+
+> [GSD documentation and source code](https://github.com/glittercowboy/get-shit-done)
+
+#### Impeccable (Design Quality)
+
+Impeccable teaches Claude how to evaluate and improve your design quality -- typography, color, layout, spacing, accessibility, and more.
+
+Install via the Claude Code plugin marketplace:
+```
+/plugin marketplace add pbakaus/impeccable
+```
+
+Then run `/plugin menu` to complete the setup.
+
+> [Impeccable documentation](https://impeccable.style) | [Source code](https://github.com/pbakaus/impeccable)
+
+#### UI/UX Pro Max (optional -- color & font selection)
+
+If you don't already have brand colors and fonts picked out, this skill has 97 curated color palettes and 57 font pairings organized by industry type.
+
+```
+npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
+```
+
+> [UI/UX Pro Max on skills.sh](https://skills.sh/nextlevelbuilder/ui-ux-pro-max-skill/ui-ux-pro-max)
+
+### Step 4: Install a code editor
+
+You'll need a code editor to view and edit your project files. Either of these works great:
+
+- [Cursor](https://www.cursor.com/) -- AI-native code editor (recommended if you're new)
+- [VS Code](https://code.visualstudio.com/) -- the most popular code editor
+
+Download one, install it, and open it. You can always open your project folder from the editor later.
+
+---
 
 ## Quick Start
 
-### 1. Clone the template
+### 1. Choose where to put your project
+
+In your terminal, navigate to the folder where you want your project to live. For example, your home folder:
+
+```bash
+cd ~
+```
+
+Or a specific folder like Documents:
+
+```bash
+cd ~/Documents
+```
+
+> **Tip:** The project will be created as a new folder inside wherever you are, so you don't need to create a folder first.
+
+### 2. Clone the template
 
 ```bash
 git clone https://github.com/BLaanen/website-starter-pack.git my-website
 cd my-website
 ```
 
-Replace `my-website` with whatever you want to name your project.
+Replace `my-website` with whatever you want to name your project (no spaces -- use dashes instead).
 
-### 2. Install dependencies
+### 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-This downloads all the packages the project needs. It may take a minute or two.
+This downloads all the packages the project needs. It may take a minute or two. You'll see a progress bar and then a summary when it's done.
 
-### 3. Create a Sanity project
+### 4. Create a Sanity project
 
 You need a Sanity project to store your website's content (text, images, etc.).
 
@@ -79,7 +223,7 @@ Now create two API tokens:
    - Permissions: **Editor**
    - Click create, then **copy the token immediately**
 
-### 4. Set up environment variables
+### 5. Set up environment variables
 
 ```bash
 cp .env.local.example .env.local
@@ -96,7 +240,7 @@ SANITY_API_WRITE_TOKEN=your_write_token_here
 
 > **Important:** The `.env.local` file contains secret tokens. It is already in `.gitignore` so it won't be uploaded to GitHub. Never share these tokens publicly.
 
-### 5. Set up CORS (so the CMS can talk to your site)
+### 6. Set up CORS (so the CMS can talk to your site)
 
 1. In [sanity.io/manage](https://www.sanity.io/manage), go to your project
 2. Navigate to **API** > **CORS Origins**
@@ -104,7 +248,7 @@ SANITY_API_WRITE_TOKEN=your_write_token_here
 4. Check the **Allow credentials** checkbox
 5. Save
 
-### 6. Start the development server
+### 7. Start the development server
 
 ```bash
 npm run dev
@@ -116,13 +260,28 @@ Open [http://localhost:3000/studio](http://localhost:3000/studio) to access the 
 
 If everything loads without errors, you're set up.
 
-## Using Claude Code to Build Your Site
+### 8. Start Claude Code
 
-This template is designed to work with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and a set of skills that dramatically speed up building a professional website:
+Open a **new terminal tab** (keep the dev server running in the first one), navigate to your project folder, and start Claude Code in skip-permissions mode so it can work faster without asking for approval on every action:
+
+```bash
+cd ~/my-website
+claude --dangerously-skip-permissions
+```
+
+> **Note:** `--dangerously-skip-permissions` lets Claude run commands, read/write files, and execute tools without prompting you each time. This is safe for local development on a new project. If you prefer to approve each action, just run `claude` instead.
+
+Now you're ready to start building. See the next section for the recommended workflow.
+
+---
+
+## Building Your Site with Claude Code
+
+This template is designed to work with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and a set of skills that dramatically speed up building a professional website.
 
 ### GSD (Get Shit Done)
 
-GSD is a workflow system for Claude Code that breaks complex projects into manageable phases and tracks your progress. Use it to:
+GSD breaks your project into manageable phases and tracks your progress. Use it to:
 
 - Plan and execute the full site-building process step by step
 - Keep track of where you are if you take a break and come back later
@@ -140,7 +299,7 @@ GSD is a workflow system for Claude Code that breaks complex projects into manag
 
 ### Impeccable (Design Quality Skills)
 
-Impeccable is a set of Claude Code skills for achieving professional-level design. Before you start building pages, use it to define what your website looks like:
+Impeccable gives Claude the ability to evaluate and improve your design. Use it to define what your website looks like and then iterate on quality:
 
 - **`/impeccable:teach-impeccable`** -- Run this first. Tell Claude about your brand: colors, fonts, personality, target audience, and design references. This context is used for all future design evaluations.
 
@@ -152,7 +311,7 @@ Impeccable is a set of Claude Code skills for achieving professional-level desig
 
 ### UI/UX Pro Max (Design Direction & Palette Selection)
 
-Don't know what colors or fonts to use yet? [UI/UX Pro Max](https://skills.sh/nextlevelbuilder/ui-ux-pro-max-skill/ui-ux-pro-max) is a Claude Code skill with 97 curated color palettes and 57 font pairings organized by industry and product type. It helps you pick a design direction before you start building:
+Don't know what colors or fonts to use yet? [UI/UX Pro Max](https://skills.sh/nextlevelbuilder/ui-ux-pro-max-skill/ui-ux-pro-max) has 97 curated color palettes and 57 font pairings organized by industry and product type. It helps you pick a design direction before you start building:
 
 - Browse color palettes by category (SaaS, healthcare, creative, fintech, etc.)
 - Get curated font pairings with Google Fonts alternatives
@@ -175,6 +334,8 @@ Don't know what colors or fonts to use yet? [UI/UX Pro Max](https://skills.sh/ne
 8. **Final audit** -- Run `/impeccable:audit` before launch to catch any issues
 
 See [PROCESS.md](./PROCESS.md) for the full detailed checklist.
+
+---
 
 ## Project Structure
 
@@ -280,3 +441,5 @@ This command requires real Sanity credentials to generate TypeScript types from 
 - [shadcn/ui Documentation](https://ui.shadcn.com/)
 - [Vercel Documentation](https://vercel.com/docs)
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [GSD Documentation](https://github.com/glittercowboy/get-shit-done)
+- [Impeccable Documentation](https://impeccable.style)
